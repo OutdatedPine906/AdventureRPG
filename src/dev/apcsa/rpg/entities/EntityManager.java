@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.creatures.Player;
+import dev.apcsa.rpg.entities.warps.WarpPoint;
 
 public class EntityManager{
 
@@ -54,7 +55,10 @@ public class EntityManager{
 	}
 	
 	public void removeAll() {
-		
+		for(Entity e : entities) {
+			if(!(e instanceof Player || e instanceof WarpPoint))
+				entities.remove(e);
+		}
 	}
 	
 	// Getters and Setters

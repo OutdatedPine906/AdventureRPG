@@ -22,7 +22,7 @@ public class South extends WarpPoint{
 		this.heal();
 		
 		if(checkPlayerCollision())
-			warp(1152f, 640);
+			warp(handler.getWorldList().getSpawn().getPath(), 1152f, 640);
 	}
 
 	@Override

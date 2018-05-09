@@ -22,7 +22,7 @@ public class North extends WarpPoint{
 		this.heal();
 		
 		if(this.checkEntityCollisions(0, 0))
-			this.warp(640f, 1152f);
+			this.warp(handler.getWorldList().getSpawn().getPath(), 640f, 1152f);
 	}
 
 	@Override

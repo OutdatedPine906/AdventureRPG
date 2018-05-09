@@ -22,7 +22,7 @@ public class East extends WarpPoint{
 		this.heal();
 		
 		if(checkPlayerCollision())
-			warp(1152f, 640);
+			warp(handler.getWorldList().getSpawn_West().getPath(), 64f, 640f);
 	}
 
 	@Override

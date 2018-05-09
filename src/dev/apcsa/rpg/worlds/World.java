@@ -16,6 +16,8 @@ import dev.apcsa.rpg.utils.Utils;
 
 public class World{
 
+	public static World currentWorld;
+	
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
@@ -97,6 +99,7 @@ public class World{
 	}
 	
 	public void switchWorld(String path, float x, float y){
+		entityManager.removeAll();
 		entityManager.getPlayer().setX(x);
 		entityManager.getPlayer().setY(y);
 		loadWorld(path);

@@ -23,7 +23,7 @@ public abstract class WarpPoint extends Entity{
 		return false;
 	}
 	
-	public void warp(float newX, float newY){
-		handler.getWorld().switchWorld(handler.getWorldList().getSpawn_West().getPath(), newX, newY);
+	public void warp(String path, float newX, float newY){
+		handler.getWorld().switchWorld(path, newX, newY);
 	}
 }
