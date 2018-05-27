@@ -16,13 +16,15 @@ public abstract class Entity {
 	protected Rectangle bounds;
 	protected int health;
 	protected boolean active = true;
+	protected int ID;
 	
-	public Entity(Handler handler, float x, float y, int width, int height){
+	public Entity(Handler handler, float x, float y, int width, int height, int id){
 		this.handler = handler;
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.ID = id;
 		health = DEFAULT_HEALTH;
 		
 		bounds = new Rectangle(0, 0, width, height);

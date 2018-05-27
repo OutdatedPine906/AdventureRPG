@@ -8,9 +8,11 @@ import dev.apcsa.rpg.gfx.Assets;
 import dev.apcsa.rpg.gfx.GameCamera;
 import dev.apcsa.rpg.input.KeyManager;
 import dev.apcsa.rpg.input.MouseManager;
+import dev.apcsa.rpg.states.GameOver;
 import dev.apcsa.rpg.states.GameState;
 import dev.apcsa.rpg.states.MenuState;
 import dev.apcsa.rpg.states.State;
+import dev.apcsa.rpg.ui.UIManager;
 
 public class Game implements Runnable{
 
@@ -25,12 +27,16 @@ public class Game implements Runnable{
 	private Graphics g;
 
 	// States
-	private State gameState;
-	private State menuState;
+	public State gameState;
+	public State menuState;
+	public State gameOverState;
 
 	// Input
 	private KeyManager keyManager;
 	private MouseManager mouseManager;
+	
+	//UI Manager
+	public UIManager uiManager;
 
 	// Camera
 	private GameCamera gameCamera;
@@ -57,8 +63,10 @@ public class Game implements Runnable{
 		
 		handler = new Handler(this);
 		gameCamera = new GameCamera(handler, 0, 0);
+		uiManager = new UIManager(handler);
 		
 		gameState = new GameState(handler);
+		gameOverState = new GameOver(handler);
 		menuState = new MenuState(handler);
 		State.setState(menuState);
 	}
@@ -115,7 +123,7 @@ public class Game implements Runnable{
 			}
 
 			if(timer >= 1000000000){
-				System.out.println("Ticks and Frames: " + ticks);
+				//System.out.println("Ticks and Frames: " + ticks);
 				ticks = 0;
 				timer = 0;
 			}
@@ -125,6 +133,25 @@ public class Game implements Runnable{
 
 	}
 
+	public synchronized void start(){
+		if(running)
+			return;
+		running = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+
+	public synchronized void stop(){
+		if(!running)
+			return;
+		running = false;
+		try{
+			thread.join();
+		} catch(InterruptedException e){
+			e.printStackTrace();
+		}
+	}
+	
 	public KeyManager getKeyManager(){
 		return keyManager;
 	}
@@ -152,24 +179,13 @@ public class Game implements Runnable{
 	public State getMenuState() {
 		return menuState;
 	}
-
-	public synchronized void start(){
-		if(running)
-			return;
-		running = true;
-		thread = new Thread(this);
-		thread.start();
+	
+	public State getGameOverState() {
+		return gameOverState;
 	}
 
-	public synchronized void stop(){
-		if(!running)
-			return;
-		running = false;
-		try{
-			thread.join();
-		} catch(InterruptedException e){
-			e.printStackTrace();
-		}
+	public Graphics getG() {
+		return g;
 	}
 
 }

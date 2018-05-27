@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.gfx.Assets;
+import dev.apcsa.rpg.items.Item;
 import dev.apcsa.rpg.tiles.Tile;
 
 public class Tree extends StaticEntity{
@@ -29,7 +30,7 @@ public class Tree extends StaticEntity{
 
 	@Override
 	public void die(){
-		
+		handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int) x, (int) y));
 	}
 
 }

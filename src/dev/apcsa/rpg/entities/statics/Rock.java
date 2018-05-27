@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.gfx.Assets;
+import dev.apcsa.rpg.items.Item;
 import dev.apcsa.rpg.tiles.Tile;
 
 public class Rock extends StaticEntity{
@@ -29,7 +30,7 @@ public class Rock extends StaticEntity{
 
 	@Override
 	public void die(){
-		
+		handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int) x, (int) y));
 	}
 
 }

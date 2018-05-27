@@ -1,5 +1,6 @@
 package dev.apcsa.rpg.states;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import dev.apcsa.rpg.Handler;

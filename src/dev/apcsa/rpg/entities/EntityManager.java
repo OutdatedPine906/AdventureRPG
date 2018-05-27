@@ -5,8 +5,15 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import dev.apcsa.rpg.Handler;
+import dev.apcsa.rpg.entities.creatures.GrayZombie;
 import dev.apcsa.rpg.entities.creatures.Player;
-import dev.apcsa.rpg.entities.warps.WarpPoint;
+import dev.apcsa.rpg.entities.creatures.Wolf;
+import dev.apcsa.rpg.entities.statics.Rock;
+import dev.apcsa.rpg.entities.statics.Tree;
+import dev.apcsa.rpg.entities.warps.East;
+import dev.apcsa.rpg.entities.warps.North;
+import dev.apcsa.rpg.entities.warps.South;
+import dev.apcsa.rpg.entities.warps.West;
 
 public class EntityManager{
 
@@ -34,6 +41,7 @@ public class EntityManager{
 	}
 
 	public void tick(){
+		//Iterator? might need to change
 		for(int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
 			e.tick();
@@ -48,17 +56,58 @@ public class EntityManager{
 		for(Entity e : entities) {
 			e.render(g);
 		}
+		player.postRender(g);
 	}
 
 	public void addEntity(Entity e) {
 		entities.add(e);
 	}
 	
-	public void removeAll() {
+	public void addEntities(ArrayList<Entity> a) {
+		entities.addAll(a);
+	}
+	
+	public void changeEntities() {
+		ArrayList<Entity> temp = new ArrayList<Entity>();
+		ArrayList<Entity> temp2 = new ArrayList<Entity>();
 		for(Entity e : entities) {
-			if(!(e instanceof Player || e instanceof WarpPoint))
-				entities.remove(e);
+			if((e instanceof Player))
+				temp.add(e);
 		}
+		entities.removeAll(entities);
+		
+		temp2.addAll(handler.getWorldList().getWorldEntities(handler.getWorld().getCurrentWorld()));
+		for(Entity e : temp2) {
+			Entity entity;
+			if(e instanceof North) {
+				entity = new North(e.handler, e.x, e.y, e.width, e.height, e.ID);
+			}
+			else if(e instanceof South) {
+				entity = new South(e.handler, e.x, e.y, e.width, e.height, e.ID);
+			}
+			else if(e instanceof East) {
+				entity = new East(e.handler, e.x, e.y, e.width, e.height, e.ID);
+			}
+			else if(e instanceof West) {
+				entity = new West(e.handler, e.x, e.y, e.width, e.height, e.ID);
+			}
+			else if(e instanceof GrayZombie) {
+				entity = new GrayZombie(e.handler, e.x, e.y, e.width, e.height);
+			}
+			else if(e instanceof Wolf) {
+				entity = new Wolf(e.handler, e.x, e.y, e.width, e.height);
+			}
+			else if(e instanceof Rock){
+				entity = new Rock(e.handler, e.x, e.y);
+			}
+			else {
+				entity = new Tree(e.handler, e.x, e.y);
+			}
+			
+			temp.add(entity);
+		}
+		
+		entities.addAll(temp);
 	}
 	
 	// Getters and Setters

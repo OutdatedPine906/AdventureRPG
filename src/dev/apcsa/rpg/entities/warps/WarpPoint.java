@@ -7,8 +7,8 @@ import dev.apcsa.rpg.entities.Entity;
 
 public abstract class WarpPoint extends Entity{
 
-	public WarpPoint(Handler handler, float x, float y, int width, int height){
-		super(handler, x, y, width, height);
+	public WarpPoint(Handler handler, float x, float y, int width, int height, int id){
+		super(handler, x, y, width, height, id);
 		this.health = 2147483647;
 	}
 	
@@ -18,8 +18,9 @@ public abstract class WarpPoint extends Entity{
 	}
 	
 	public boolean checkPlayerCollision() {
-		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(this.bounds))
+		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(this.bounds)) {
 			return true;
+		}
 		return false;
 	}
 	

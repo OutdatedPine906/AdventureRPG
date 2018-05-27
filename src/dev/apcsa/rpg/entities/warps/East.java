@@ -8,8 +8,12 @@ import dev.apcsa.rpg.tiles.Tile;
 
 public class East extends WarpPoint{
 
-	public East(Handler handler){
-		super(handler, 1216, 576, Tile.TILE_WIDTH, Tile.TILE_HEIGHT * 2);
+	private int ID;
+	
+	public East(Handler handler, float x, float y, int width, int height, int ID){
+		super(handler, x, y, width, height, ID);
+		
+		this.ID = ID;
 		
 		bounds.x = (int) this.x;
 		bounds.y = (int) this.y;
@@ -21,8 +25,16 @@ public class East extends WarpPoint{
 	public void tick(){
 		this.heal();
 		
-		if(checkPlayerCollision())
-			warp(handler.getWorldList().getSpawn_West().getPath(), 64f, 640f);
+		if(checkPlayerCollision()) {
+			if(checkPlayerCollision()){			
+				if(ID == 1)
+					warp(handler.getWorldList().getGrass().getPath(), 1472, 1216);
+				else if(ID == 2)
+					warp(handler.getWorldList().getSpawn().getPath(), 1152, 608);
+				else
+					warp(handler.getWorldList().getSpawn().getPath(), 1152, 608);
+			}	
+		}
 	}
 
 	@Override

@@ -1,22 +1,18 @@
 package dev.apcsa.rpg.worlds;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.EntityManager;
 import dev.apcsa.rpg.entities.creatures.Player;
-import dev.apcsa.rpg.entities.statics.Rock;
-import dev.apcsa.rpg.entities.statics.Tree;
-import dev.apcsa.rpg.entities.warps.East;
-import dev.apcsa.rpg.entities.warps.North;
-import dev.apcsa.rpg.entities.warps.South;
-import dev.apcsa.rpg.entities.warps.West;
+import dev.apcsa.rpg.items.ItemManager;
 import dev.apcsa.rpg.tiles.Tile;
 import dev.apcsa.rpg.utils.Utils;
 
 public class World{
 
-	public static World currentWorld;
+	public static String currentWorld;
 	
 	private int width, height;
 	private int spawnX, spawnY;
@@ -28,18 +24,14 @@ public class World{
 
 	// Entities
 	protected EntityManager entityManager;
+	//Items
+	protected ItemManager itemManager;
 
 	public World(Handler handler, String path){
 		this.handler = handler;
 		this.path = path;
-		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
-
-		//Warp Point Spawning
-		entityManager.addEntity(new North(handler));
-		entityManager.addEntity(new East(handler));
-		entityManager.addEntity(new South(handler));
-		entityManager.addEntity(new West(handler));		
-		
+		entityManager = new EntityManager(handler, new Player(handler, 100, 100, 10));	
+		itemManager = new ItemManager(handler);
 		loadWorld(path);
 
 		entityManager.getPlayer().setX(spawnX);
@@ -47,6 +39,7 @@ public class World{
 	}
 
 	public void tick(){
+		itemManager.tick();
 		entityManager.tick();
 	}
 
@@ -63,18 +56,24 @@ public class World{
 						(int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
+		
+		//Items
+		itemManager.render(g);
+		
 		// Entities
 		entityManager.render(g);
+		
+		//Health Bar
+		g.setColor(Color.gray);
+		g.fillRect(630, 10, handler.getWorld().getEntityManager().getPlayer().getMaxHealth() * 20 + 40, 40);
+		g.setColor(Color.green);
+		g.fillRect(650, 20, handler.getWorld().getEntityManager().getPlayer().getHealth() * 20, 20);
 	}
 
 	public Tile getTile(int x, int y){
 
 		if(x < 0 || y < 0 || x >= width || y >= height)
 			return Tile.grassTile;
-		
-		if(x == 0 && y == 10) {
-			return Tile.testing;
-		}
 		
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null)
@@ -99,10 +98,11 @@ public class World{
 	}
 	
 	public void switchWorld(String path, float x, float y){
-		entityManager.removeAll();
+		currentWorld = path;
 		entityManager.getPlayer().setX(x);
 		entityManager.getPlayer().setY(y);
 		loadWorld(path);
+		entityManager.changeEntities();
 	}
 	
 	public int getWidth(){
@@ -121,4 +121,16 @@ public class World{
 		return path;
 	}
 
+	public String getCurrentWorld() {
+		return currentWorld;
+	}
+
+	public ItemManager getItemManager(){
+		return itemManager;
+	}
+
+	public void setItemManager(ItemManager itemManager){
+		this.itemManager = itemManager;
+	}
+	
 }
