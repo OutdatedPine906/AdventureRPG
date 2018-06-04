@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
+import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
 import dev.apcsa.rpg.gfx.Animation;
 import dev.apcsa.rpg.gfx.Assets;
 import dev.apcsa.rpg.inventory.Inventory;
@@ -16,13 +17,17 @@ public class Player extends Creature{
 
 	// Animations
 	private Animation down, up, left, right;
+	
 	//Attack Timer
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
-	private long lastHealTimer, healCooldown = 2500, healTimer = healCooldown;
+	
+	//Heal Timer
+	private long lastHealTimer, healCooldown = 2500, healTimer = healCooldown, lastHealth = health;
+	
 	//Inventory
 	private Inventory inventory;
 	
-	private int gold, maxHealth, attack;
+	private int gold, maxHealth, attack, constitution;
 	
 	public Player(Handler handler, int x, int y, int startingGold){
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -30,6 +35,7 @@ public class Player extends Creature{
 		gold = startingGold;
 		maxHealth = health;
 		attack = 1;
+		constitution = 0;
 		
 		bounds.x = 22;
 		bounds.y = 30;
@@ -72,16 +78,26 @@ public class Player extends Creature{
 
 	@Override
 	public void die(){
+		while(!handler.getWorld().getEntityManager().getEntities().isEmpty()) {
+			handler.getWorld().getEntityManager().getEntities().remove(0);
+		}
 		State.setState(handler.getGame().getGameOverState());
 	}
 
 	private void heal() {
 		healTimer += System.currentTimeMillis() - lastHealTimer;
 		lastHealTimer = System.currentTimeMillis();
+		
 		if(handler.getWorld().getCurrentWorld() == handler.getWorldList().getSpawn().getPath())
 			healCooldown = 200;
 		else
-			healCooldown = 2500;
+			healCooldown = 5000;
+		
+		if(health < lastHealth) {
+			healTimer = 0;
+			lastHealth = health;
+		}
+		
 		if(healTimer < healCooldown)
 			return;
 		
@@ -150,6 +166,11 @@ public class Player extends Creature{
 		if(inventory.isActive())
 			return;
 		
+		if(handler.getGame().getWeapons().isActive() && handler.getGame().getWeapons() != null)
+			return;
+		if(handler.getGame().getArmor().isActive() && handler.getGame().getArmor() != null)
+			return;
+
 		if(handler.getKeyManager().up){
 			yMove = -speed;
 		}
@@ -206,6 +227,10 @@ public class Player extends Creature{
 	
 	public void addGold(int amt) {
 		gold += amt;
+	}
+	
+	public void subtractGold(int amt) {
+		gold -= amt;
 	}
 
 	public int getMaxHealth(){

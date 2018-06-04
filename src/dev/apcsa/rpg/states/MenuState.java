@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import dev.apcsa.rpg.Handler;
+import dev.apcsa.rpg.entities.creatures.Player;
 import dev.apcsa.rpg.gfx.Assets;
 import dev.apcsa.rpg.gfx.Text;
 import dev.apcsa.rpg.ui.ClickListener;
@@ -12,12 +13,23 @@ import dev.apcsa.rpg.ui.UIManager;
 
 public class MenuState extends State{
 
+	private boolean firstRun = true;
 	private UIManager uiManager;
 	private UIImageButton start = new UIImageButton(416, 400, 128, 64, Assets.btn_start, new ClickListener(){
 		@Override
 		public void onClick(){
-			handler.getMouseManager().setUIManager(null);
-			State.setState(handler.getGame().gameState);
+			if(!firstRun) {
+				State gameState = new GameState(handler);
+				
+				handler.getMouseManager().setUIManager(null);
+				State.setState(gameState);
+			}
+			else {
+				firstRun = false;
+				handler.getMouseManager().setUIManager(null);
+				State.setState(handler.getGame().gameState);
+			}
+			
 		}
 	});
 
@@ -31,6 +43,9 @@ public class MenuState extends State{
 
 	@Override
 	public void tick(){
+		if(handler.getMouseManager().getUIManager() == null)
+			handler.getMouseManager().setUIManager(uiManager);
+
 		uiManager.tick();
 
 		// Temporarily just go directly to the GameState, skip the menu state!

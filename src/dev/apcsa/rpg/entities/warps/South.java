@@ -15,10 +15,10 @@ public class South extends WarpPoint{
 		
 		this.ID = ID;
 		
-		bounds.x = (int) this.x;
-		bounds.y = (int) this.y;
-		bounds.width = (int) this.width;
-		bounds.height = (int) this.height;
+		getBounds().x = (int) this.x;
+		getBounds().y = (int) this.y;
+		getBounds().width = (int) this.width;
+		getBounds().height = (int) this.height;
 	}
 
 	@Override

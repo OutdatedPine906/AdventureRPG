@@ -34,6 +34,8 @@ public abstract class Entity {
 	
 	public abstract void render(Graphics g);
 	
+	public void postRender(Graphics g){}
+	
 	public abstract void die();
 	
 	public void hurt(int amt) {
@@ -106,4 +108,7 @@ public abstract class Entity {
 		this.active = active;
 	}
 	
+	public Rectangle getBounds() {
+		return bounds;
+	}
 }

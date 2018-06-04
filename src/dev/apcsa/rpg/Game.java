@@ -8,6 +8,7 @@ import dev.apcsa.rpg.gfx.Assets;
 import dev.apcsa.rpg.gfx.GameCamera;
 import dev.apcsa.rpg.input.KeyManager;
 import dev.apcsa.rpg.input.MouseManager;
+import dev.apcsa.rpg.shop.Shop;
 import dev.apcsa.rpg.states.GameOver;
 import dev.apcsa.rpg.states.GameState;
 import dev.apcsa.rpg.states.MenuState;
@@ -31,6 +32,10 @@ public class Game implements Runnable{
 	public State menuState;
 	public State gameOverState;
 
+	// Shops
+	public Shop weapons;
+	public Shop armor;
+	
 	// Input
 	private KeyManager keyManager;
 	private MouseManager mouseManager;
@@ -186,6 +191,22 @@ public class Game implements Runnable{
 
 	public Graphics getG() {
 		return g;
+	}
+
+	public Shop getWeapons(){
+		return weapons;
+	}
+
+	public void setWeapons(Shop weapons){
+		this.weapons = weapons;
+	}
+
+	public Shop getArmor(){
+		return armor;
+	}
+
+	public void setArmor(Shop armor){
+		this.armor = armor;
 	}
 
 }

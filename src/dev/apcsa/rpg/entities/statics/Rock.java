@@ -12,10 +12,10 @@ public class Rock extends StaticEntity{
 	public Rock(Handler handler, float x, float y){
 		super(handler, x, y, Tile.TILE_WIDTH, Tile.TILE_HEIGHT * 2);
 		
-		bounds.x = 3;
-		bounds.y = (int) (height / 2f);
-		bounds.width = width - 6;
-		bounds.height = (int) (height - height / 2f);
+		getBounds().x = 3;
+		getBounds().y = (int) (height / 2f);
+		getBounds().width = width - 6;
+		getBounds().height = (int) (height - height / 2f);
 	}
 
 	@Override

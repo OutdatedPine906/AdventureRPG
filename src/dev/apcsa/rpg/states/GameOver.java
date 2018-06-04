@@ -12,7 +12,8 @@ import dev.apcsa.rpg.ui.UIManager;
 
 public class GameOver extends State {
 
-	private long currentTime = 0, lastTime = 0, delay = 50000;
+	private long currentTime = 0, lastTime = 0, delay = 3000;
+	private boolean hasRun = false;
 	
 	public GameOver(Handler handler){
 		super(handler);
@@ -20,12 +21,17 @@ public class GameOver extends State {
 
 	@Override
 	public void tick() {
+		if(!hasRun) {
+			lastTime = System.currentTimeMillis();
+			hasRun = true;
+		}
+		
 		currentTime += System.currentTimeMillis() - lastTime;
 		lastTime = System.currentTimeMillis();
-		System.out.println(currentTime);
 		if(currentTime < delay)
 			return;
 		
+		hasRun = false;
 		currentTime = 0;
 		lastTime = 0;
 		State.setState(handler.getGame().menuState);
@@ -37,6 +43,10 @@ public class GameOver extends State {
 		g.fillRect(0, 0, 960, 640);
 		Text.drawString(g, "Game Over", 480, 320, true, Color.red, Assets.font48);
 		Text.drawString(g, "Redirecting to Menu", 480, 500, true, Color.red, Assets.font48);
+	}
+	
+	public void setHasRun(boolean run) {
+		hasRun = run;
 	}
 	
 }

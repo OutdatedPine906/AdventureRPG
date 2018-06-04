@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import dev.apcsa.rpg.Handler;
-import dev.apcsa.rpg.entities.creatures.GrayZombie;
 import dev.apcsa.rpg.entities.creatures.Player;
-import dev.apcsa.rpg.entities.creatures.Wolf;
+import dev.apcsa.rpg.entities.creatures.enemies.GrayZombie;
+import dev.apcsa.rpg.entities.creatures.enemies.Wolf;
+import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
 import dev.apcsa.rpg.entities.statics.Rock;
 import dev.apcsa.rpg.entities.statics.Tree;
 import dev.apcsa.rpg.entities.warps.East;
@@ -56,6 +57,10 @@ public class EntityManager{
 		for(Entity e : entities) {
 			e.render(g);
 		}
+		for(Entity e : entities) {
+			if(!(e instanceof Player))
+				e.postRender(g);
+		}
 		player.postRender(g);
 	}
 
@@ -70,6 +75,7 @@ public class EntityManager{
 	public void changeEntities() {
 		ArrayList<Entity> temp = new ArrayList<Entity>();
 		ArrayList<Entity> temp2 = new ArrayList<Entity>();
+		
 		for(Entity e : entities) {
 			if((e instanceof Player))
 				temp.add(e);
@@ -90,6 +96,9 @@ public class EntityManager{
 			}
 			else if(e instanceof West) {
 				entity = new West(e.handler, e.x, e.y, e.width, e.height, e.ID);
+			}
+			else if(e instanceof ShopKeeper) {
+				entity = new ShopKeeper(e.handler, e.x, e.y, e.ID);
 			}
 			else if(e instanceof GrayZombie) {
 				entity = new GrayZombie(e.handler, e.x, e.y, e.width, e.height);

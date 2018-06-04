@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.EntityManager;
 import dev.apcsa.rpg.entities.creatures.Player;
+import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
 import dev.apcsa.rpg.items.ItemManager;
 import dev.apcsa.rpg.tiles.Tile;
 import dev.apcsa.rpg.utils.Utils;
@@ -86,8 +87,8 @@ public class World{
 		String[] tokens = file.split("\\s+");
 		width = Utils.parseInt(tokens[0]);
 		height = Utils.parseInt(tokens[1]);
-		spawnX = Utils.parseInt(tokens[2]);
-		spawnY = Utils.parseInt(tokens[3]);			
+		this.spawnX = Utils.parseInt(tokens[2]);
+		this.spawnY = Utils.parseInt(tokens[3]);			
 		
 		tiles = new int[width][height];
 		for(int y = 0; y < height; y++){
@@ -131,6 +132,14 @@ public class World{
 
 	public void setItemManager(ItemManager itemManager){
 		this.itemManager = itemManager;
+	}
+	
+	public int getSpawnX() {
+		return spawnX;
+	}
+	
+	public int getSpawnY() {
+		return spawnY;
 	}
 	
 }

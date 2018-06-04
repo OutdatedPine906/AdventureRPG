@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
 import dev.apcsa.rpg.entities.creatures.Creature;
-import dev.apcsa.rpg.entities.creatures.GrayZombie;
-import dev.apcsa.rpg.entities.creatures.Wolf;
+import dev.apcsa.rpg.entities.creatures.enemies.GrayZombie;
+import dev.apcsa.rpg.entities.creatures.enemies.Wolf;
+import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
 import dev.apcsa.rpg.entities.statics.Rock;
 import dev.apcsa.rpg.entities.statics.Tree;
 import dev.apcsa.rpg.entities.warps.East;
@@ -25,8 +26,8 @@ public class WorldList{
 		this.handler = handler;
 
 		// World Creation
-		spawn = new World(handler, "res/worlds/world1.txt");
-		grass = new World(handler, "res/worlds/world2.txt");
+		spawn = new World(handler, "res/worlds/Spawn.txt");
+		grass = new World(handler, "res/worlds/Grasslands.txt");
 
 		// Entity Spawning
 		spawnEntities = new ArrayList<Entity>();
@@ -38,6 +39,8 @@ public class WorldList{
 		spawnEntities.add(new Tree(handler, 200, 50));
 		spawnEntities.add(new Rock(handler, 100, 320));
 		spawnEntities.add(new Rock(handler, 900, 350));
+		spawnEntities.add(new ShopKeeper(handler, 960, 320, 1));
+		spawnEntities.add(new ShopKeeper(handler, 320, 960, 2));
 
 		grassEntities = new ArrayList<Entity>();
 		grassEntities.add(new North(handler, Tile.TILE_WIDTH * 19, Tile.TILE_HEIGHT * 16, Tile.TILE_WIDTH, Tile.TILE_HEIGHT, 2));
@@ -52,21 +55,14 @@ public class WorldList{
 		grassEntities.add(new Wolf(handler, 600, 100, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT));
 		
 		// Spawn -- First Load
-		spawn.entityManager.addEntity(new North(handler, 576, 0, Tile.TILE_WIDTH * 2, Tile.TILE_HEIGHT, 1));
-		spawn.entityManager.addEntity(new East(handler, 1216, 576, Tile.TILE_WIDTH, Tile.TILE_HEIGHT * 2, 1));
-		spawn.entityManager.addEntity(new South(handler, 576, 1216, Tile.TILE_WIDTH * 2, Tile.TILE_HEIGHT, 1));
-		spawn.entityManager.addEntity(new West(handler, 0, 576, Tile.TILE_WIDTH, Tile.TILE_HEIGHT * 2, 1));
-		spawn.entityManager.addEntity(new Tree(handler, 700, 450));
-		spawn.entityManager.addEntity(new Tree(handler, 200, 50));
-		spawn.entityManager.addEntity(new Rock(handler, 100, 320));
-		spawn.entityManager.addEntity(new Rock(handler, 900, 350));
+		spawn.entityManager.addEntities(spawnEntities);
 	}
 	
 	public ArrayList getWorldEntities(String currentWorld){
 		switch (currentWorld){
-		case "res/worlds/world1.txt":
+		case "res/worlds/Spawn.txt":
 			return spawnEntities;
-		case "res/worlds/world2.txt":
+		case "res/worlds/Grasslands.txt":
 			return grassEntities;
 		default:
 			return spawnEntities;

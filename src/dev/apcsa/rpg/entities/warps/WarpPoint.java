@@ -18,7 +18,7 @@ public abstract class WarpPoint extends Entity{
 	}
 	
 	public boolean checkPlayerCollision() {
-		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(this.bounds)) {
+		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(this.getBounds())) {
 			return true;
 		}
 		return false;

@@ -1,8 +1,10 @@
 package dev.apcsa.rpg.entities.creatures;
 
+import java.awt.Rectangle;
+
+import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
 import dev.apcsa.rpg.tiles.Tile;
-import dev.apcsa.rpg.Handler;
 
 public abstract class Creature extends Entity{
 
@@ -11,13 +13,16 @@ public abstract class Creature extends Entity{
 	public static final int DEFAULT_CREATURE_WIDTH = 64, DEFAULT_CREATURE_HEIGHT = 64;
 
 	protected float speed;
-	protected float xMove, yMove;
+	protected float xMove, yMove, spawnX, spawnY;
+	protected int attack, attackRange;
 
 	public Creature(Handler handler, float x, float y, int width, int height){
 		super(handler, x, y, width, height, 0);
 		speed = DEFAULT_SPEED;
 		xMove = 0;
 		yMove = 0;
+		spawnX = x;
+		spawnY = y;
 	}
 
 	public void move(){
@@ -80,7 +85,7 @@ public abstract class Creature extends Entity{
 			}
 		}
 	}
-
+	
 	protected boolean collisionWithTile(int x, int y){
 		return handler.getWorld().getTile(x, y).isSolid();
 	}
