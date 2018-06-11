@@ -28,10 +28,10 @@ public class Wolf extends Enemy{
 		bounds.height = 20;
 
 		// Animations
-		down = new Animation(500, Assets.wolf_right);
-		up = new Animation(500, Assets.wolf_right);
+		down = new Animation(500, Assets.wolf_down);
+		up = new Animation(500, Assets.wolf_up);
 		right = new Animation(500, Assets.wolf_right);
-		left = new Animation(500, Assets.wolf_right);
+		left = new Animation(500, Assets.wolf_left);
 	}
 
 	@Override

@@ -39,8 +39,8 @@ public class East extends WarpPoint{
 
 	@Override
 	public void render(Graphics g){
-		g.setColor(Color.green);
-		g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height);
+		//g.setColor(Color.green);
+		//g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height);
 	}
 
 	@Override
