@@ -41,8 +41,8 @@ public class South extends WarpPoint{
 
 	@Override
 	public void render(Graphics g){
-		g.setColor(Color.blue);
-		g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height);
+		//g.setColor(Color.blue);
+		//g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height);
 	}
 
 	@Override
