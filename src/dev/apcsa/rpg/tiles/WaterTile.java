@@ -7,12 +7,19 @@ import dev.apcsa.rpg.gfx.Assets;
 
 public class WaterTile extends Tile{
 	
+	private static Animation waterTile = new Animation(1, Assets.water);
+	
 	public WaterTile(int id){
-		super(Assets.water, id);
+		super(waterTile, id);
 	}
 	
 	@Override
 	public boolean isSolid() {
+		return true;
+	}
+	
+	@Override
+	public boolean isAnimated(){
 		return true;
 	}
 }

@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import dev.apcsa.rpg.gfx.Animation;
-import dev.apcsa.rpg.gfx.Assets;
 
 public class Tile {
 	
@@ -15,9 +14,6 @@ public class Tile {
 	public static Tile dirtTile = new DirtTile(1);
 	public static Tile rockTile = new WallTile(2);
 	public static Tile water = new WaterTile(3);
-	public static Tile bridgeVertical = new BridgeTile(Assets.bridgeVertical, 4);
-	public static Tile bridgeHorizontal = new BridgeTile(Assets.bridgeHorizontal, 5);
-	public static Tile woodFloor = new WoodFloorTile(6);
 	
 	//CLASS
 	

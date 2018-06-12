@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
 import dev.apcsa.rpg.entities.creatures.Creature;
-import dev.apcsa.rpg.entities.creatures.enemies.Bat;
 import dev.apcsa.rpg.entities.creatures.enemies.GrayZombie;
 import dev.apcsa.rpg.entities.creatures.enemies.Wolf;
 import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
@@ -19,9 +18,9 @@ import dev.apcsa.rpg.tiles.Tile;
 
 public class WorldList{
 
-	private World spawn, grass, bossCave;
+	private World spawn, grass;
 	private Handler handler;
-	private ArrayList<Entity> spawnEntities, grassEntities, bossCaveEntities;
+	private ArrayList<Entity> spawnEntities, grassEntities;
 
 	public WorldList(Handler handler){
 		this.handler = handler;
@@ -29,7 +28,6 @@ public class WorldList{
 		// World Creation
 		spawn = new World(handler, "res/worlds/Spawn.txt");
 		grass = new World(handler, "res/worlds/Grasslands.txt");
-		bossCave = new World(handler, "res/worlds/BossCave.txt");
 
 		// Entity Spawning
 		spawnEntities = new ArrayList<Entity>();
@@ -46,7 +44,6 @@ public class WorldList{
 
 		grassEntities = new ArrayList<Entity>();
 		grassEntities.add(new North(handler, Tile.TILE_WIDTH * 19, Tile.TILE_HEIGHT * 16, Tile.TILE_WIDTH, Tile.TILE_HEIGHT, 2));
-		grassEntities.add(new North(handler, Tile.TILE_WIDTH * 18, 0, Tile.TILE_WIDTH * 3, Tile.TILE_HEIGHT, 3));
 		grassEntities.add(new East(handler, Tile.TILE_WIDTH * 22, Tile.TILE_HEIGHT * 19, Tile.TILE_WIDTH, Tile.TILE_HEIGHT, 2));
 		grassEntities.add(new South(handler, Tile.TILE_WIDTH * 19, Tile.TILE_HEIGHT * 22, Tile.TILE_WIDTH, Tile.TILE_HEIGHT, 2));
 		grassEntities.add(new West(handler, Tile.TILE_WIDTH * 16, Tile.TILE_HEIGHT * 19, Tile.TILE_WIDTH, Tile.TILE_HEIGHT, 2));
@@ -57,10 +54,6 @@ public class WorldList{
 		grassEntities.add(new GrayZombie(handler, 600, 1250, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT));
 		grassEntities.add(new Wolf(handler, 600, 100, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT));
 		
-		bossCaveEntities = new ArrayList<Entity>();
-		bossCaveEntities.add(new South(handler, Tile.TILE_WIDTH * 6, Tile.TILE_HEIGHT * 9, Tile.TILE_WIDTH * 3, Tile.TILE_HEIGHT, 3));
-		bossCaveEntities.add(new Bat(handler, 320, 448, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT));
-		
 		// Spawn -- First Load
 		spawn.entityManager.addEntities(spawnEntities);
 	}
@@ -68,11 +61,9 @@ public class WorldList{
 	public ArrayList getWorldEntities(String currentWorld){
 		switch (currentWorld){
 		case "res/worlds/Spawn.txt":
-			return spawnEntities; 
+			return spawnEntities;
 		case "res/worlds/Grasslands.txt":
 			return grassEntities;
-		case "res/worlds/BossCave.txt":
-			return bossCaveEntities;
 		default:
 			return spawnEntities;
 		}
@@ -86,7 +77,4 @@ public class WorldList{
 		return grass;
 	}
 
-	public World getBossCave(){
-		return bossCave;
-	}
 }

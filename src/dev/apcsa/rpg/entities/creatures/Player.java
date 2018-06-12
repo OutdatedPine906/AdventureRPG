@@ -16,7 +16,7 @@ import dev.apcsa.rpg.states.State;
 public class Player extends Creature{
 
 	// Animations
-	private Animation down, up, left, right, attack_down, attack_up, attack_left, attack_right;
+	private Animation down, up, left, right;
 	
 	//Attack Timer
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
@@ -48,11 +48,6 @@ public class Player extends Creature{
 		right = new Animation(500, Assets.player_right);
 		left = new Animation(500, Assets.player_left);
 		
-		attack_down = new Animation(250, Assets.player_attack_down);
-		attack_up = new Animation(250, Assets.player_attack_up);
-		attack_right = new Animation(250, Assets.player_attack_right);
-		attack_left = new Animation(250, Assets.player_attack_left);
-		
 		inventory = new Inventory(handler);
 	}
 
@@ -63,11 +58,6 @@ public class Player extends Creature{
 		up.tick();
 		left.tick();
 		right.tick();
-		
-		attack_down.tick();
-		attack_up.tick();
-		attack_left.tick();
-		attack_right.tick();
 
 		//Healing
 		heal();
@@ -97,10 +87,6 @@ public class Player extends Creature{
 	private void heal() {
 		healTimer += System.currentTimeMillis() - lastHealTimer;
 		lastHealTimer = System.currentTimeMillis();
-		
-		if(health > maxHealth) {
-			health = maxHealth;
-		}
 		
 		if(handler.getWorld().getCurrentWorld() == handler.getWorldList().getSpawn().getPath())
 			healCooldown = 200;
@@ -177,10 +163,6 @@ public class Player extends Creature{
 		xMove = 0;
 		yMove = 0;
 
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)){
-			gold += 100;
-		}
-		
 		if(inventory.isActive())
 			return;
 		
@@ -216,16 +198,16 @@ public class Player extends Creature{
 	private BufferedImage getCurrentAnimationFrame(){
 	
 		if(handler.getKeyManager().aUp) {
-			return attack_up.getCurrentFrame();
+			return up.getCurrentFrame();
 		}
 		else if(handler.getKeyManager().aDown) {
-			return attack_down.getCurrentFrame();
+			return down.getCurrentFrame();
 		}
 		else if(handler.getKeyManager().aLeft) {
-			return attack_left.getCurrentFrame();
+			return left.getCurrentFrame();
 		}
 		else if(handler.getKeyManager().aRight) {
-			return attack_right.getCurrentFrame();
+			return right.getCurrentFrame();
 		}
 		
 		if(xMove < 0){

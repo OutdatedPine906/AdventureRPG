@@ -86,7 +86,6 @@ public class Inventory{
 	public void addItem(Item item){
 		for(Item i : inventoryItems){
 			if(i.getId() == item.getId()){
-				System.out.println(i.getId() + "  " + item.getId());
 				i.setCount(i.getCount() + item.getCount());
 				return;
 			}
@@ -95,31 +94,6 @@ public class Inventory{
 		inventoryItems.add(item);
 	}
 
-	public int getItemCount(Item item){
-		for(Item i : inventoryItems){
-			if(i.getId() == item.getId()){
-				return i.getCount();
-			}
-		}
-		
-		return 0;
-	}
-
-	public void removeItem(Item item){
-		for(Item i : inventoryItems){
-			if(i.getId() == item.getId() && i.getCount() - item.getCount() >= 0){
-				if(i.getCount() - item.getCount() == 0) {
-					inventoryItems.remove(i);
-				}
-				i.setCount(i.getCount() - item.getCount());
-				return;
-			}
-		}
-		
-		inventoryItems.remove(item);
-	}
-	
-	
 	// Getters and Setters
 
 	public Handler getHandler(){

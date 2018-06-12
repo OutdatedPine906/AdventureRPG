@@ -14,6 +14,7 @@ import dev.apcsa.rpg.tiles.Tile;
 
 public class ShopKeeper extends Creature{
 
+	private Animation idle;
 	private Rectangle shopBoundry;
 	private Shop shop;
 	private int ID;
@@ -49,46 +50,29 @@ public class ShopKeeper extends Creature{
 			handler.getGame().setArmor(shop);
 		
 		addShopItems();
+		
+		//Animation
+		idle = new Animation(500, Assets.player_down);
 	}
 
 	public void addShopItems() {
-		shop.addItem(Item.buying);
 		if(ID == 1) {
-			shop.addItem(Item.silverSword);
-			shop.addItem(Item.goldSword);
-			shop.addItem(Item.rubySword);
-		}
-		else if(ID == 2) {
-			shop.addItem(Item.woodenShield);
-			shop.addItem(Item.ironShield);
-			shop.addItem(Item.sapphireShield);
-		}
-		
-		shop.addItem(Item.selling);
-		shop.addItem(Item.woodItem);
-		shop.addItem(Item.rockItem);
-		
-		if(ID == 1) {
-			shop.addItem(Item.silverSword);
-			shop.addItem(Item.goldSword);
-			shop.addItem(Item.rubySword);
-		}
-		else if(ID == 2) {
-			shop.addItem(Item.woodenShield);
-			shop.addItem(Item.ironShield);
-			shop.addItem(Item.sapphireShield);
+			shop.addItem(Item.woodItem);
+			shop.addItem(Item.rockItem);
 		}
 	}
 	
 	@Override
-	public void tick(){		
+	public void tick(){
+		idle.tick();
+		
 		heal();
 		shop.tick();
 	}
 
 	@Override
 	public void render(Graphics g){
-		g.drawImage(Assets.shopkeeper, (int) (x - handler.getGameCamera().getxOffset()),
+		g.drawImage(idle.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		//g.setColor(Color.blue);
 		//g.fillRect((int)(shopBoundry.x - handler.getGameCamera().getxOffset()), (int)(shopBoundry.y - handler.getGameCamera().getyOffset()), shopBoundry.width, shopBoundry.height);

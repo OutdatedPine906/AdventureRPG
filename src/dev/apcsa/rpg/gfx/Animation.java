@@ -30,10 +30,6 @@ public class Animation{
 		}
 	}
 	
-	public void setCurrentFrame(int index) {
-		this.index = index;
-	}
-	
 	public BufferedImage getCurrentFrame() {
 		return frames[index];
 	}
