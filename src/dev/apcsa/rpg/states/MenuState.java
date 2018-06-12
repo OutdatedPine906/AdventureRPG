@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import dev.apcsa.rpg.Handler;
-import dev.apcsa.rpg.entities.creatures.Player;
 import dev.apcsa.rpg.gfx.Assets;
 import dev.apcsa.rpg.gfx.Text;
 import dev.apcsa.rpg.ui.ClickListener;

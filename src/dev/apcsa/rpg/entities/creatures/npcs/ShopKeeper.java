@@ -1,12 +1,10 @@
 package dev.apcsa.rpg.entities.creatures.npcs;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.creatures.Creature;
-import dev.apcsa.rpg.gfx.Animation;
 import dev.apcsa.rpg.gfx.Assets;
 import dev.apcsa.rpg.items.Item;
 import dev.apcsa.rpg.shop.Shop;
@@ -55,9 +53,13 @@ public class ShopKeeper extends Creature{
 		shop.addItem(Item.buying);
 		if(ID == 1) {
 			shop.addItem(Item.silverSword);
+			shop.addItem(Item.goldSword);
+			shop.addItem(Item.rubySword);
 		}
 		else if(ID == 2) {
 			shop.addItem(Item.woodenShield);
+			shop.addItem(Item.ironShield);
+			shop.addItem(Item.sapphireShield);
 		}
 		
 		shop.addItem(Item.selling);
@@ -66,9 +68,13 @@ public class ShopKeeper extends Creature{
 		
 		if(ID == 1) {
 			shop.addItem(Item.silverSword);
+			shop.addItem(Item.goldSword);
+			shop.addItem(Item.rubySword);
 		}
 		else if(ID == 2) {
 			shop.addItem(Item.woodenShield);
+			shop.addItem(Item.ironShield);
+			shop.addItem(Item.sapphireShield);
 		}
 	}
 	
@@ -82,8 +88,6 @@ public class ShopKeeper extends Creature{
 	public void render(Graphics g){
 		g.drawImage(Assets.shopkeeper, (int) (x - handler.getGameCamera().getxOffset()),
 				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
-		//g.setColor(Color.blue);
-		//g.fillRect((int)(shopBoundry.x - handler.getGameCamera().getxOffset()), (int)(shopBoundry.y - handler.getGameCamera().getyOffset()), shopBoundry.width, shopBoundry.height);
 	}
 	
 	public void postRender(Graphics g) {

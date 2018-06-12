@@ -14,10 +14,10 @@ public class Tree extends StaticEntity{
 		
 		health = 4;
 		
-		getBounds().x = 10;
-		getBounds().y = (int) (height / 1.5f);
-		getBounds().width = width - 20;
-		getBounds().height = (int) (height - height / 1.5f);
+		bounds.x = 10;
+		bounds.y = (int) (height / 1.5f);
+		bounds.width = width - 20;
+		bounds.height = (int) (height - height / 1.5f);
 	}
 
 	@Override

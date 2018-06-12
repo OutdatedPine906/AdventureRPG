@@ -1,6 +1,5 @@
 package dev.apcsa.rpg.gfx;
 
-import dev.apcsa.rpg.Game;
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
 import dev.apcsa.rpg.tiles.Tile;

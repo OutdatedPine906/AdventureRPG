@@ -1,10 +1,8 @@
 package dev.apcsa.rpg.entities.warps;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import dev.apcsa.rpg.Handler;
-import dev.apcsa.rpg.tiles.Tile;
 
 public class East extends WarpPoint{
 
@@ -38,10 +36,7 @@ public class East extends WarpPoint{
 	}
 
 	@Override
-	public void render(Graphics g){
-		//g.setColor(Color.green);
-		//g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height);
-	}
+	public void render(Graphics g){}
 
 	@Override
 	public void die(){}

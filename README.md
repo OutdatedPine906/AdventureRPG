@@ -30,3 +30,12 @@ https://www.fontsquirrel.com/fonts/Silkscreen
 All original artwork by CodeNMore within the New Beginner Java Game
 Programming Tutorial Series is under the CC0 license:
 https://creativecommons.org/publicdomain/zero/1.0/
+
+CONTROLS:
+
+ - WASD to move
+ - Arrow Keys to attack
+ - E to Open and Close Inventory
+ - P to Open and Close Shop if you are in the Shop Squares
+ - W and S to navigate Shop and Inventory Items
+ - Enter to purchase Items

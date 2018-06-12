@@ -3,7 +3,6 @@ package dev.apcsa.rpg.entities;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import dev.apcsa.rpg.Game;
 import dev.apcsa.rpg.Handler;
 
 public abstract class Entity {

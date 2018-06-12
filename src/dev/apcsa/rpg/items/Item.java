@@ -10,18 +10,20 @@ import dev.apcsa.rpg.gfx.Assets;
 public class Item{
 
 	//Handler
-	public static Item[] items = new Item[256];
+	public static Item[] items = new Item[10];
 	public static Item woodItem = new Item(Assets.wood, "Wood", 0, 2, 1);
 	public static Item rockItem = new Item(Assets.rock, "Rock", 1, 3, 2);
 	
-	public static Item silverSword = new Item(Assets.sword, "Silver Sword", 2, 15, 10);
-	public static Item goldSword = new Item(Assets.sword, "Gold Sword", 3, 15, 10);
-	public static Item bloodDiamondSword = new Item(Assets.sword, "Silver Sword", 4, 15, 10);
-	public static Item woodenShield = new Item(Assets.shield, "Wooden Shield", 5, 10, 8);
+	public static Item silverSword = new Item(Assets.silverSword, "Silver Sword", 2, 15, 10);
+	public static Item goldSword = new Item(Assets.goldSword, "Gold Sword", 3, 120, 80);
+	public static Item rubySword = new Item(Assets.rubySword, "Ruby Sword", 4, 600, 400);
 	
+	public static Item woodenShield = new Item(Assets.woodenShield, "Wooden Shield", 5, 12, 8);
+	public static Item ironShield = new Item(Assets.ironShield, "Iron Shield", 6, 80, 8);
+	public static Item sapphireShield = new Item(Assets.sapphireShield, "Sapphire Shield", 7, 480, 320);
 	
-	public static Item buying = new Item(null, "----Buying----", 254, 9999, 0);
-	public static Item selling = new Item(null, "----Selling----", 255, 9999, 0);
+	public static Item buying = new Item(null, "----Buying----", 8, 9999, 0);
+	public static Item selling = new Item(null, "----Selling----", 9, 9999, 0);
 	
 	//Class
 	public static final int ITEM_WIDTH = 32;
@@ -93,8 +95,12 @@ public class Item{
 	
 	public void bonusInfo() {
 		switch(name) {
-		case "Iron Sword": this.bonusType = "Atk"; this.bonus = 2; break;
-		case "Wooden Shield": this.bonusType = "HP"; this.bonus = 5; break;
+		case "Silver Sword": this.bonusType = "Atk"; this.bonus = 2; break;
+		case "Gold Sword": this.bonusType = "Atk"; this.bonus = 10; break;
+		case "Ruby Sword": this.bonusType = "Atk"; this.bonus = 50; break;
+		case "Wooden Shield": this.bonusType = "HP"; this.bonus = 2; break;
+		case "Iron Shield": this.bonusType = "HP"; this.bonus = 10; break;
+		case "Sapphire Shield":  this.bonusType = "HP"; this.bonus = 50; break;
 		}
 	}
 	

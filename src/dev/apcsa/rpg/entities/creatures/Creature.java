@@ -1,7 +1,5 @@
 package dev.apcsa.rpg.entities.creatures;
 
-import java.awt.Rectangle;
-
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
 import dev.apcsa.rpg.tiles.Tile;
@@ -34,7 +32,7 @@ public abstract class Creature extends Entity{
 
 	public void moveX(){
 		if(xMove > 0) {
-			//Moving right
+			//Right
 			int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
 			
 			if(!collisionWithTile(tx, (int)(y + bounds.y) / Tile.TILE_HEIGHT) && 
@@ -46,7 +44,7 @@ public abstract class Creature extends Entity{
 			}
 		}
 		else if(xMove < 0) {
-			//Moving left
+			//Left
 			int tx = (int) (x + xMove + bounds.x) / Tile.TILE_WIDTH;
 			
 			if(!collisionWithTile(tx, (int)(y + bounds.y) / Tile.TILE_HEIGHT) && 

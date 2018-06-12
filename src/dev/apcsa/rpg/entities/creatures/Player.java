@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
-import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
 import dev.apcsa.rpg.gfx.Animation;
 import dev.apcsa.rpg.gfx.Assets;
 import dev.apcsa.rpg.inventory.Inventory;
@@ -27,7 +26,7 @@ public class Player extends Creature{
 	//Inventory
 	private Inventory inventory;
 	
-	private int gold, maxHealth, attack, constitution;
+	private int gold, maxHealth, attack;
 	
 	public Player(Handler handler, int x, int y, int startingGold){
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -35,7 +34,6 @@ public class Player extends Creature{
 		gold = startingGold;
 		maxHealth = health;
 		attack = 1;
-		constitution = 0;
 		
 		bounds.x = 22;
 		bounds.y = 30;
@@ -176,10 +174,6 @@ public class Player extends Creature{
 	private void getInput(){
 		xMove = 0;
 		yMove = 0;
-
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)){
-			gold += 100;
-		}
 		
 		if(inventory.isActive())
 			return;

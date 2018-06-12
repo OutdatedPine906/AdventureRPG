@@ -14,6 +14,7 @@ import dev.apcsa.rpg.states.GameOver;
 import dev.apcsa.rpg.states.GameState;
 import dev.apcsa.rpg.states.MenuState;
 import dev.apcsa.rpg.states.State;
+import dev.apcsa.rpg.states.VictoryState;
 import dev.apcsa.rpg.ui.UIManager;
 
 public class Game implements Runnable{
@@ -32,6 +33,7 @@ public class Game implements Runnable{
 	public State gameState;
 	public State menuState;
 	public State gameOverState;
+	public State victoryState;
 
 	// Shops
 	public Shop weapons;
@@ -74,6 +76,7 @@ public class Game implements Runnable{
 		
 		gameState = new GameState(handler);
 		gameOverState = new GameOver(handler);
+		victoryState = new VictoryState(handler);
 		menuState = new MenuState(handler);
 		State.setState(menuState);
 	}

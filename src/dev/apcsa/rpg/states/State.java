@@ -2,7 +2,6 @@ package dev.apcsa.rpg.states;
 
 import java.awt.Graphics;
 
-import dev.apcsa.rpg.Game;
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.worlds.WorldList;
 

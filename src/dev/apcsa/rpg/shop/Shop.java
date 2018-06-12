@@ -60,30 +60,79 @@ public class Shop{
 			}
 			
 			switch(shopItems.get(selectedItem).getName()) {
-			case "Iron Sword":
+			case "Silver Sword":
 				if(handler.getWorld().getEntityManager().getPlayer().getGold() >= Item.silverSword.getBuyPrice() && selectedItem < sellStart) {
 					handler.getWorld().getEntityManager().getPlayer().subtractGold(Item.silverSword.getBuyPrice());
 					handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.silverSword.createNew(1));
-					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() + 2);
+					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() + Item.silverSword.getBonus());
 				}
 				else if(handler.getWorld().getEntityManager().getPlayer().getInventory().getItemCount(Item.silverSword) > 0 && selectedItem >= sellStart) {
 					handler.getWorld().getEntityManager().getPlayer().addGold(Item.silverSword.getSellPrice());
 					handler.getWorld().getEntityManager().getPlayer().getInventory().removeItem(Item.silverSword);
-					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() - 2);
+					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() - Item.silverSword.getBonus());
+				}
+				break;
+			case "Gold Sword":
+				if(handler.getWorld().getEntityManager().getPlayer().getGold() >= Item.goldSword.getBuyPrice() && selectedItem < sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().subtractGold(Item.goldSword.getBuyPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.goldSword.createNew(1));
+					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() + Item.goldSword.getBonus());
+				}
+				else if(handler.getWorld().getEntityManager().getPlayer().getInventory().getItemCount(Item.goldSword) > 0 && selectedItem >= sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().addGold(Item.goldSword.getSellPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().removeItem(Item.goldSword);
+					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() - Item.goldSword.getBonus());
+				}
+				break;
+			case "Ruby Sword":
+				if(handler.getWorld().getEntityManager().getPlayer().getGold() >= Item.rubySword.getBuyPrice() && selectedItem < sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().subtractGold(Item.rubySword.getBuyPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.rubySword.createNew(1));
+					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() + Item.rubySword.getBonus());
+				}
+				else if(handler.getWorld().getEntityManager().getPlayer().getInventory().getItemCount(Item.rubySword) > 0 && selectedItem >= sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().addGold(Item.rubySword.getSellPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().removeItem(Item.rubySword);
+					handler.getWorld().getEntityManager().getPlayer().setAttack(handler.getWorld().getEntityManager().getPlayer().getAttack() - Item.rubySword.getBonus());
 				}
 				break;
 			case "Wooden Shield":
 				if(handler.getWorld().getEntityManager().getPlayer().getGold() >= Item.woodenShield.getBuyPrice()  && selectedItem < sellStart) {
 					handler.getWorld().getEntityManager().getPlayer().subtractGold(Item.woodenShield.getBuyPrice());
 					handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.woodenShield.createNew(1));
-					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() + 5);
-					handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + 5);
+					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() + Item.woodenShield.getBonus());
+					handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + Item.woodenShield.getBonus());
 				}
 				else if(handler.getWorld().getEntityManager().getPlayer().getInventory().getItemCount(Item.woodenShield) > 0 && selectedItem >= sellStart) {
-					System.out.println("Sell");
 					handler.getWorld().getEntityManager().getPlayer().addGold(Item.woodenShield.getSellPrice());
 					handler.getWorld().getEntityManager().getPlayer().getInventory().removeItem(Item.woodenShield);
-					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() - 5);
+					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() - Item.woodenShield.getBonus());
+				}
+				break;
+			case "Iron Shield":
+				if(handler.getWorld().getEntityManager().getPlayer().getGold() >= Item.ironShield.getBuyPrice()  && selectedItem < sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().subtractGold(Item.ironShield.getBuyPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.ironShield.createNew(1));
+					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() + Item.ironShield.getBonus());
+					handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + Item.ironShield.getBonus());
+				}
+				else if(handler.getWorld().getEntityManager().getPlayer().getInventory().getItemCount(Item.ironShield) > 0 && selectedItem >= sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().addGold(Item.ironShield.getSellPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().removeItem(Item.ironShield);
+					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() - Item.ironShield.getBonus());
+				}
+				break;
+			case "Sapphire Shield":
+				if(handler.getWorld().getEntityManager().getPlayer().getGold() >= Item.sapphireShield.getBuyPrice()  && selectedItem < sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().subtractGold(Item.sapphireShield.getBuyPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.sapphireShield.createNew(1));
+					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() + Item.sapphireShield.getBonus());
+					handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + Item.sapphireShield.getBonus());
+				}
+				else if(handler.getWorld().getEntityManager().getPlayer().getInventory().getItemCount(Item.sapphireShield) > 0 && selectedItem >= sellStart) {
+					handler.getWorld().getEntityManager().getPlayer().addGold(Item.sapphireShield.getSellPrice());
+					handler.getWorld().getEntityManager().getPlayer().getInventory().removeItem(Item.sapphireShield);
+					handler.getWorld().getEntityManager().getPlayer().setMaxHealth(handler.getWorld().getEntityManager().getPlayer().getMaxHealth() - Item.sapphireShield.getBonus());
 				}
 				break;
 			case "Wood":

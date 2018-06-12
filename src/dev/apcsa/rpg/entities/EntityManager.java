@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.creatures.Player;
+import dev.apcsa.rpg.entities.creatures.enemies.Bat;
 import dev.apcsa.rpg.entities.creatures.enemies.GrayZombie;
 import dev.apcsa.rpg.entities.creatures.enemies.Wolf;
 import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
@@ -42,7 +43,6 @@ public class EntityManager{
 	}
 
 	public void tick(){
-		//Iterator? might need to change
 		for(int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
 			e.tick();
@@ -105,6 +105,9 @@ public class EntityManager{
 			}
 			else if(e instanceof Wolf) {
 				entity = new Wolf(e.handler, e.x, e.y, e.width, e.height);
+			}
+			else if(e instanceof Bat) {
+				entity = new Bat(e.handler, e.x, e.y, e.width, e.height);
 			}
 			else if(e instanceof Rock){
 				entity = new Rock(e.handler, e.x, e.y);

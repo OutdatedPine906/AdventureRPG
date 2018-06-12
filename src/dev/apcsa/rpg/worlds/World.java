@@ -6,9 +6,9 @@ import java.awt.Graphics;
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.EntityManager;
 import dev.apcsa.rpg.entities.creatures.Player;
-import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
 import dev.apcsa.rpg.gfx.Animation;
 import dev.apcsa.rpg.gfx.Assets;
+import dev.apcsa.rpg.gfx.Text;
 import dev.apcsa.rpg.items.ItemManager;
 import dev.apcsa.rpg.tiles.Tile;
 import dev.apcsa.rpg.utils.Utils;
@@ -22,8 +22,6 @@ public class World{
 	private int[][] tiles;
 	private Handler handler;
 	private String path;
-	private boolean hasRan = false;
-	private boolean loaded = false;
 
 	// Entities
 	protected EntityManager entityManager;
@@ -68,7 +66,7 @@ public class World{
 		
 		//Health Bar
 		playerHealthDisplay(g, entityManager.getPlayer().getHealth(), 0);
-		
+		Text.drawString(g, "HP: " + Integer.toString(entityManager.getPlayer().getHealth()), 10, handler.getHeight() - 40, false, Color.black, Assets.font28);
 	}
 
 	public void playerHealthDisplay(Graphics g, int playerHealth, int count) {
@@ -76,12 +74,12 @@ public class World{
 		
 		if(playerHealth > 10) {			
 			health.setCurrentFrame(10);
-			g.drawImage(health.getCurrentFrame(), 100 + (count * 64), handler.getHeight() - 84, null);
+			g.drawImage(health.getCurrentFrame(), 110 + (count * 32), handler.getHeight() - 64, null);
 			playerHealthDisplay(g, playerHealth - 10, count + 1);
 		}
 		else {
 			health.setCurrentFrame(10 - (playerHealth % 10));
-			g.drawImage(health.getCurrentFrame(), 100 + (count * 64), handler.getHeight() - 84, null);	
+			g.drawImage(health.getCurrentFrame(), 110 + (count * 32), handler.getHeight() - 64, null);	
 		}
 	}
 	

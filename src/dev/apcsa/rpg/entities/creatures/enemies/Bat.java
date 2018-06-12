@@ -8,28 +8,29 @@ import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.creatures.Creature;
 import dev.apcsa.rpg.gfx.Animation;
 import dev.apcsa.rpg.gfx.Assets;
+import dev.apcsa.rpg.states.State;
 
-public class GrayZombie extends Enemy{
+public class Bat extends Enemy{
 
 	// Animations
 	private Animation down, up, left, right;
 
-	public GrayZombie(Handler handler, float x, float y, int width, int height){
-		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 2, 50, 800);
+	public Bat(Handler handler, float x, float y, int width, int height){
+		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10, 50, 400);
 
-		this.speed = 1;
-		this.health = 6;
+		this.speed = 2.7f;
+		this.health = 200;
 		
-		bounds.x = 22;
+		bounds.x = 12;
 		bounds.y = 30;
-		bounds.width = 22;
-		bounds.height = 33;
+		bounds.width = 35;
+		bounds.height = 20;
 
 		// Animations
-		down = new Animation(500, Assets.zombie_down);
-		up = new Animation(500, Assets.zombie_up);
-		right = new Animation(500, Assets.zombie_right);
-		left = new Animation(500, Assets.zombie_left);
+		down = new Animation(500, Assets.wolf_down);
+		up = new Animation(500, Assets.wolf_up);
+		right = new Animation(500, Assets.wolf_right);
+		left = new Animation(500, Assets.wolf_left);
 	}
 
 	@Override
@@ -41,7 +42,7 @@ public class GrayZombie extends Enemy{
 		right.tick();
 
 		//Movement
-		movementChecks();
+		moveToPlayer();
 		move();
 		
 		// Attack
@@ -65,13 +66,11 @@ public class GrayZombie extends Enemy{
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		g.setColor(Color.green);
-		g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int)
-		(y - 5 - handler.getGameCamera().getyOffset()), health * 10,
-		5);
+		g.fillRect(280, 16, health * 2,32);
 	}
 
 	@Override
 	public void die(){
-		handler.getWorld().getEntityManager().getPlayer().addGold(20);;
+		State.setState(handler.getGame().getGameOverState());
 	}
 }

@@ -105,10 +105,12 @@ public abstract class Enemy extends Creature{
 		int arSize = attackRange;
 		ar.width = arSize;
 		ar.height = arSize;
+		String attackDirection = "";
 		
 		if(handler.getWorld().getEntityManager().getPlayer().getY() - this.y < arSize && handler.getWorld().getEntityManager().getPlayer().getY() < this.y) {
 			ar.x = cb.x + cb.width / 2 - arSize / 2;
 			ar.y = cb.y - arSize;
+			attackDirection = "";
 		}
 		else if(handler.getWorld().getEntityManager().getPlayer().getY() - this.y < arSize && handler.getWorld().getEntityManager().getPlayer().getY() > this.y) {
 			ar.x = cb.x + cb.width / 2 - arSize / 2;
@@ -125,6 +127,10 @@ public abstract class Enemy extends Creature{
 		else {
 			return;
 		}
+		
+		//if(this instanceof Bat) {
+			
+		//}
 		
 		attackTimer = 0;
 		

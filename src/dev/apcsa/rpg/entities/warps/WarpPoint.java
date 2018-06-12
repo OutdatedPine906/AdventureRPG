@@ -1,7 +1,5 @@
 package dev.apcsa.rpg.entities.warps;
 
-import java.awt.Graphics;
-
 import dev.apcsa.rpg.Handler;
 import dev.apcsa.rpg.entities.Entity;
 

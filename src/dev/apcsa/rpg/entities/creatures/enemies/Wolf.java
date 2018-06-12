@@ -2,11 +2,9 @@ package dev.apcsa.rpg.entities.creatures.enemies;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import dev.apcsa.rpg.Handler;
-import dev.apcsa.rpg.entities.Entity;
 import dev.apcsa.rpg.entities.creatures.Creature;
 import dev.apcsa.rpg.gfx.Animation;
 import dev.apcsa.rpg.gfx.Assets;
@@ -19,7 +17,7 @@ public class Wolf extends Enemy{
 	public Wolf(Handler handler, float x, float y, int width, int height){
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 1, 40, 800);
 
-		this.speed = 2.5f;
+		this.speed = 2.3f;
 		this.health = 4;
 		
 		bounds.x = 12;
@@ -69,7 +67,7 @@ public class Wolf extends Enemy{
 		g.setColor(Color.green);
 		g.fillRect((int) (x + 10 - handler.getGameCamera().getxOffset()), (int)
 		(y - 5 - handler.getGameCamera().getyOffset()), health * 10,
-		5);//*/
+		5);
 	}
 
 	@Override
