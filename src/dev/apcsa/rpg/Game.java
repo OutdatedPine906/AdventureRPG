@@ -1,5 +1,6 @@
 package dev.apcsa.rpg;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -64,6 +65,7 @@ public class Game implements Runnable{
 		display.getFrame().addMouseMotionListener(mouseManager);
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
+		display.getCanvas().setBackground(Color.black);
 		Assets.init();
 		
 		handler = new Handler(this);

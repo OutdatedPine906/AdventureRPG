@@ -36,10 +36,7 @@ public class West extends WarpPoint{
 	}
 
 	@Override
-	public void render(Graphics g){
-		g.setColor(Color.orange);
-		g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height);
-	}
+	public void render(Graphics g){}
 
 	@Override
 	public void die(){}

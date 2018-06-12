@@ -32,6 +32,8 @@ public class South extends WarpPoint{
 					warp(handler.getWorldList().getGrass().getPath(), 1216, 1472);
 				else if(ID == 2)
 					warp(handler.getWorldList().getSpawn().getPath(), 608, 1152);
+				else if(ID == 3)
+					warp(handler.getWorldList().getGrass().getPath(), 1216, 64);
 				else
 					warp(handler.getWorldList().getSpawn().getPath(), 608, 1152);
 			}	
@@ -40,10 +42,7 @@ public class South extends WarpPoint{
 	}
 
 	@Override
-	public void render(Graphics g){
-		g.setColor(Color.blue);
-		g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height);
-	}
+	public void render(Graphics g){}
 
 	@Override
 	public void die(){}

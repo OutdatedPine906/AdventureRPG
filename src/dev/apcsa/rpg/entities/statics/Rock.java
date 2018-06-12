@@ -10,7 +10,7 @@ import dev.apcsa.rpg.tiles.Tile;
 public class Rock extends StaticEntity{
 
 	public Rock(Handler handler, float x, float y){
-		super(handler, x, y, Tile.TILE_WIDTH, Tile.TILE_HEIGHT * 2);
+		super(handler, x, y, Tile.TILE_WIDTH, Tile.TILE_HEIGHT);
 		
 		getBounds().x = 3;
 		getBounds().y = (int) (height / 2f);
