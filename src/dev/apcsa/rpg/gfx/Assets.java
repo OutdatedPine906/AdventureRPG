@@ -151,17 +151,17 @@ public class Assets {
 		bat_left = new BufferedImage[2];
 		bat_right = new BufferedImage[2];
 		
-		bat_right[0] = bat.crop(widthLarge * 3, heightSmall * 2, widthLarge, heightSmall);
-		bat_right[1] = bat.crop(widthLarge * 3, heightSmall * 3, widthLarge, heightSmall);
+		bat_left[0] = bat.crop(widthLarge * 2, heightSmall * 2, widthLarge, heightSmall);
+		bat_left[1] = bat.crop(widthLarge * 2, heightSmall * 3, widthLarge, heightSmall);
 		
-		bat_down[0] = bat.crop(widthLarge * 2, heightSmall * 2, widthLarge, heightSmall);
-		bat_down[1] = bat.crop(widthLarge * 2, heightSmall * 3, widthLarge, heightSmall);
+		bat_down[0] = bat.crop(widthLarge, heightSmall * 2, widthLarge, heightSmall);
+		bat_down[1] = bat.crop(widthLarge, heightSmall * 3, widthLarge, heightSmall);
 		
 		bat_up[0] = bat.crop(0, heightSmall * 2, widthLarge, heightSmall);
 		bat_up[1] = bat.crop(0, heightSmall * 3, widthLarge, heightSmall);
 		
-		bat_down[0] = bat.crop(widthLarge, heightSmall * 2, widthLarge, heightSmall);
-		bat_down[1] = bat.crop(widthLarge, heightSmall * 3, widthLarge, heightSmall);
+		bat_right[0] = bat.crop(widthLarge * 3, heightSmall * 2, widthLarge, heightSmall);
+		bat_right[1] = bat.crop(widthLarge * 3, heightSmall * 3, widthLarge, heightSmall);
 		
 		bat_attack_down = new BufferedImage[2];
 		bat_attack_up = new BufferedImage[2];
@@ -177,8 +177,8 @@ public class Assets {
 		bat_attack_right[0] = bat.crop(0, 0, widthLarge, heightSmall);
 		bat_attack_right[1] = bat.crop(0, heightSmall, widthLarge, heightSmall);
 		
-		bat_attack_left[0] = bat.crop(widthLarge, 0, widthLarge * 2, heightSmall);
-		bat_attack_left[1] = bat.crop(widthLarge, heightSmall, widthLarge * 2, heightSmall);
+		bat_attack_left[0] = bat.crop(widthLarge, 0, widthLarge, heightSmall);
+		bat_attack_left[1] = bat.crop(widthLarge, heightSmall, widthLarge, heightSmall);
 		
 		//Tiles
 		dirt = tileMap.crop(0, heightLarge, widthLarge, heightLarge);

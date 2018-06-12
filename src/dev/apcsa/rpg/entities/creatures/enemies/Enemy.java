@@ -12,6 +12,7 @@ public abstract class Enemy extends Creature{
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 	private boolean runCheck = false;
 	private Rectangle movementBounds;
+	protected String attackDirection = "";
 	
 	public Enemy(Handler handler, float x, float y, int width, int height, int attack, int attackRange, long attackCooldown){
 		super(handler, x, y, width, height);
@@ -105,32 +106,32 @@ public abstract class Enemy extends Creature{
 		int arSize = attackRange;
 		ar.width = arSize;
 		ar.height = arSize;
-		String attackDirection = "";
+		
 		
 		if(handler.getWorld().getEntityManager().getPlayer().getY() - this.y < arSize && handler.getWorld().getEntityManager().getPlayer().getY() < this.y) {
 			ar.x = cb.x + cb.width / 2 - arSize / 2;
 			ar.y = cb.y - arSize;
-			attackDirection = "";
+			attackDirection = "Down";
 		}
 		else if(handler.getWorld().getEntityManager().getPlayer().getY() - this.y < arSize && handler.getWorld().getEntityManager().getPlayer().getY() > this.y) {
 			ar.x = cb.x + cb.width / 2 - arSize / 2;
 			ar.y = cb.y + cb.height;
+			attackDirection = "Up";
 		}
 		else if(handler.getWorld().getEntityManager().getPlayer().getX() - this.x < arSize && handler.getWorld().getEntityManager().getPlayer().getX() < this.x) {
 			ar.x = cb.x - arSize;
 			ar.y = cb.y + cb.height / 2 - arSize / 2;
+			attackDirection = "Left";
 		}
 		else if(handler.getWorld().getEntityManager().getPlayer().getX() - this.x < arSize && handler.getWorld().getEntityManager().getPlayer().getX() > this.x) {
 			ar.x = cb.x + cb.width;
 			ar.y = cb.y + cb.height / 2 - arSize / 2;
+			attackDirection = "Right";
 		}
 		else {
+			attackDirection = "";
 			return;
 		}
-		
-		//if(this instanceof Bat) {
-			
-		//}
 		
 		attackTimer = 0;
 		

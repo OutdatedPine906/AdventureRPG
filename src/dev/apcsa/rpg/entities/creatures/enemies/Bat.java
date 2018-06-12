@@ -13,12 +13,12 @@ import dev.apcsa.rpg.states.State;
 public class Bat extends Enemy{
 
 	// Animations
-	private Animation down, up, left, right;
+	private Animation down, up, left, right, attack_down, attack_up, attack_right, attack_left;
 
 	public Bat(Handler handler, float x, float y, int width, int height){
-		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10, 50, 400);
+		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 1, 50, 400);
 
-		this.speed = 2.7f;
+		this.speed = 1f;//2.7
 		this.health = 200;
 		
 		bounds.x = 12;
@@ -27,10 +27,15 @@ public class Bat extends Enemy{
 		bounds.height = 20;
 
 		// Animations
-		down = new Animation(500, Assets.wolf_down);
-		up = new Animation(500, Assets.wolf_up);
-		right = new Animation(500, Assets.wolf_right);
-		left = new Animation(500, Assets.wolf_left);
+		down = new Animation(500, Assets.bat_down);
+		up = new Animation(500, Assets.bat_up);
+		right = new Animation(500, Assets.bat_right);
+		left = new Animation(500, Assets.bat_left);
+		
+		attack_down = new Animation(500, Assets.bat_attack_down);
+		attack_up = new Animation(500, Assets.bat_attack_up);
+		attack_right = new Animation(500, Assets.bat_attack_right);
+		attack_left = new Animation(500, Assets.bat_attack_left);
 	}
 
 	@Override
@@ -40,6 +45,11 @@ public class Bat extends Enemy{
 		up.tick();
 		left.tick();
 		right.tick();
+		
+		attack_down.tick(); 
+		attack_up.tick();
+		attack_right.tick(); 
+		attack_left.tick();
 
 		//Movement
 		moveToPlayer();
@@ -50,6 +60,21 @@ public class Bat extends Enemy{
 	}
 	
 	private BufferedImage getCurrentAnimationFrame(){
+		System.out.println(attackDirection);
+		if(attackDirection.equals("Left")) {
+			return attack_left.getCurrentFrame();
+		}
+		else if(attackDirection.equals("Right")) {
+			return attack_right.getCurrentFrame();
+		}
+		else if(attackDirection.equals("Up")) {
+			return attack_up.getCurrentFrame();
+		}
+		else if(attackDirection.equals("Down")) {
+			return attack_down.getCurrentFrame();
+		}
+			
+		
 		if(xMove < 0){
 			return left.getCurrentFrame();
 		} else if(xMove > 0){
