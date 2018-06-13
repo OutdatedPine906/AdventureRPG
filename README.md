@@ -1,6 +1,6 @@
-# AdventureRPG
+# Aleron's Curse
 This is the Final Project for Chris Barnes and Max Lampert for AP Computer Science A at Avon High School.
-
+ 
 SOURCES:
 
 Most of the framework for this game was created with the help of CodeNMore's "NEW Beginner 2D Game Programming" playlist on youtube.
