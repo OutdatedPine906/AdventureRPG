@@ -16,7 +16,7 @@ public class Bat extends Enemy{
 	private Animation down, up, left, right, attack_down, attack_up, attack_right, attack_left;
 
 	public Bat(Handler handler, float x, float y, int width, int height){
-		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 1, 50, 400);
+		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10, 50, 400);
 
 		this.speed = 2.7f;
 		this.health = 200;
