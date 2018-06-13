@@ -10,6 +10,7 @@ import dev.apcsa.rpg.entities.creatures.enemies.Bat;
 import dev.apcsa.rpg.entities.creatures.enemies.GrayZombie;
 import dev.apcsa.rpg.entities.creatures.enemies.Wolf;
 import dev.apcsa.rpg.entities.creatures.npcs.ShopKeeper;
+import dev.apcsa.rpg.entities.statics.Bush;
 import dev.apcsa.rpg.entities.statics.Rock;
 import dev.apcsa.rpg.entities.statics.Tree;
 import dev.apcsa.rpg.entities.warps.East;
@@ -111,6 +112,9 @@ public class EntityManager{
 			}
 			else if(e instanceof Rock){
 				entity = new Rock(e.handler, e.x, e.y);
+			}
+			else if(e instanceof Bush) {
+				entity = new Bush(e.handler, e.x, e.y);
 			}
 			else {
 				entity = new Tree(e.handler, e.x, e.y);
