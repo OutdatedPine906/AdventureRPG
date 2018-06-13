@@ -96,6 +96,6 @@ public class Bat extends Enemy{
 
 	@Override
 	public void die(){
-		State.setState(handler.getGame().getGameOverState());
+		State.setState(handler.getGame().getVictoryState());
 	}
 }

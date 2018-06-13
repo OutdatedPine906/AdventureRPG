@@ -193,6 +193,10 @@ public class Game implements Runnable{
 	public State getGameOverState() {
 		return gameOverState;
 	}
+	
+	public State getVictoryState() {
+		return victoryState;
+	}
 
 	public Graphics getG() {
 		return g;
