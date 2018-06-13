@@ -18,7 +18,7 @@ public class Bat extends Enemy{
 	public Bat(Handler handler, float x, float y, int width, int height){
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 1, 50, 400);
 
-		this.speed = 1f;//2.7
+		this.speed = 2.7f;
 		this.health = 200;
 		
 		bounds.x = 12;
@@ -60,7 +60,7 @@ public class Bat extends Enemy{
 	}
 	
 	private BufferedImage getCurrentAnimationFrame(){
-		System.out.println(attackDirection);
+		
 		if(attackDirection.equals("Left")) {
 			return attack_left.getCurrentFrame();
 		}

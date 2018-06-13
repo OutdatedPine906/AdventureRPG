@@ -46,17 +46,13 @@ public class MenuState extends State{
 			handler.getMouseManager().setUIManager(uiManager);
 
 		uiManager.tick();
-
-		// Temporarily just go directly to the GameState, skip the menu state!
-		//handler.getMouseManager().setUIManager(null);
-		//State.setState(handler.getGame().getGameState());
 	}
 
 	@Override
 	public void render(Graphics g){
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 960, 640);
-		Text.drawString(g, "RPG Adventure", 480, 320, true, Color.green, Assets.font48);
+		Text.drawString(g, "Aleron's Curse", 480, 320, true, Color.green, Assets.font48);
 		uiManager.render(g);
 	}
 }

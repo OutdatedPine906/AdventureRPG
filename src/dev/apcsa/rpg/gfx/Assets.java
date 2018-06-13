@@ -26,26 +26,25 @@ public class Assets {
 		font48 = FontLoader.loadFont("res/fonts/slkscr.ttf", 48);
 		
 		SpriteSheet spritesheet = new SpriteSheet(ImageLoader.loadImage("/textures/spritesheet.png"));
-		SpriteSheet weaponSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Swords.png"));
 		SpriteSheet tileMap = new SpriteSheet(ImageLoader.loadImage("/textures/blockTileMap.png"));
 		SpriteSheet wolf = new SpriteSheet(ImageLoader.loadImage("/textures/Wolf.png"));
 		SpriteSheet zombie = new SpriteSheet(ImageLoader.loadImage("/textures/Zombie.png"));
 		SpriteSheet bat = new SpriteSheet(ImageLoader.loadImage("/textures/Bat.png"));
 		SpriteSheet player = new SpriteSheet(ImageLoader.loadImage("/textures/Player.png"));
 		SpriteSheet heart = new SpriteSheet(ImageLoader.loadImage("/textures/GUI.png"));
-		SpriteSheet shields = new SpriteSheet(ImageLoader.loadImage("/textures/Shields.png"));
+		SpriteSheet weapons = new SpriteSheet(ImageLoader.loadImage("/textures/Weapons.png"));
 		
 		inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 		shopScreen = ImageLoader.loadImage("/textures/shopScreen.png");
 		
 		//Items
 		wood = spritesheet.crop(widthSmall, heightSmall * 2, widthSmall, heightSmall);
-		silverSword = weaponSheet.crop(0, 0, widthLarge, heightLarge);
-		goldSword = weaponSheet.crop(widthLarge, 0, widthLarge, heightLarge);
-		rubySword = weaponSheet.crop(widthLarge * 2, 0, widthLarge, heightLarge);
-		woodenShield = shields.crop(0, 0, widthSmall, widthSmall);
-		ironShield = shields.crop(widthSmall, 0, widthSmall, widthSmall);
-		sapphireShield = shields.crop(widthSmall * 2, 0, widthSmall, widthSmall);
+		silverSword = weapons.crop(0, heightSmall, widthSmall, heightSmall);
+		goldSword = weapons.crop(widthSmall, heightSmall, widthSmall, heightSmall);
+		rubySword = weapons.crop(widthSmall * 2, heightSmall, widthSmall, heightSmall);
+		woodenShield = weapons.crop(0, 0, widthSmall, widthSmall);
+		ironShield = weapons.crop(widthSmall, 0, widthSmall, widthSmall);
+		sapphireShield = weapons.crop(widthSmall * 2, 0, widthSmall, widthSmall);
 		
 		//Buttons
 		btn_start = new BufferedImage[2];
